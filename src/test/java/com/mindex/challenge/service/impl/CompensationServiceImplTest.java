@@ -72,9 +72,9 @@ public class CompensationServiceImplTest {
         testCompensationWithoutEmployeeId.setSalary(200000);
         testCompensationWithoutEmployeeId.setEffectiveDate("2023-9-28");
 
-        Compensation createcompensationSenario2=restTemplate.postForEntity(compensationUrl, testCompensationWithoutEmployeeId, Compensation.class).getBody();
-        assertCompensationEquivalence(testCompensationWithoutEmployeeId,createcompensationSenario2 );
-        assertEmployeeEquivalence(testEmployeeWithoutId, createcompensationSenario2.getEmployee());
+        Compensation createcompensationWithoutEmployeeId=restTemplate.postForEntity(compensationUrl, testCompensationWithoutEmployeeId, Compensation.class).getBody();
+        assertCompensationEquivalence(testCompensationWithoutEmployeeId,createcompensationWithoutEmployeeId );
+        assertEmployeeEquivalence(testEmployeeWithoutId, createcompensationWithoutEmployeeId.getEmployee());
 
 
         // Read checks

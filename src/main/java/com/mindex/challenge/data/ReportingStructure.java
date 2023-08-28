@@ -7,8 +7,8 @@ public class ReportingStructure {
 
 
     public ReportingStructure(Employee employee, int numberOfReports) {
-        this.employee = employee;
-        this.numberOfReports = numberOfReports;
+        setEmployee(employee);
+        setNumberOfReports(numberOfReports);
     }
 
     public Employee getEmployee() {

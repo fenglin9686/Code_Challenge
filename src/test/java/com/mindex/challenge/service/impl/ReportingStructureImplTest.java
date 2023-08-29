@@ -38,7 +38,7 @@ public class ReportingStructureImplTest {
     }
 
     @Test
-    public void testCreateReadUpdate() {
+    public void testReadReportStructure() {
         List<Employee>  empList=new ArrayList<>();
         Employee testEmployee = new Employee();
         testEmployee.setFirstName("John");

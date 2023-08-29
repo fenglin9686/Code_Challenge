@@ -16,6 +16,14 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
     @Autowired
     private EmployeeService employeeService;
 
+    /**
+     * Returns a ReportingStructure object
+     * Receiving employee id
+     * Return new ReportingStructure  if record found
+     * Otherwise throw error message
+     * @param  employeeId: employee id
+     * @return      compensation Object
+     */
     @Override
     public ReportingStructure read(String employeeId) {
         LOG.debug("Reading reportingStructure with employeeId: [{}]", employeeId);
@@ -23,7 +31,14 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
         int totalReports = this.calculateNumberOfReports(employee);
         return new ReportingStructure(employee, totalReports);
     }
-
+    /**
+     * Returns number of report
+     * Receiving employee
+     * Recursion method calculate number of report
+     * And fill out employee information in variable of report, instead just id.
+     * @param  employee: employee object
+     * @return      number of report
+     */
     public int calculateNumberOfReports(Employee employee) {
         int count = 0;
         List<Employee> employeeList = new ArrayList<>();

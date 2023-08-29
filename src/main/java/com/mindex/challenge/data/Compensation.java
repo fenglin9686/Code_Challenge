@@ -6,7 +6,7 @@ import java.util.Date;
 public class Compensation {
     private Employee employee;
     private int salary;
-    private String effectiveDate;
+    private Date effectiveDate;
 
 
     public Compensation(){
@@ -29,11 +29,11 @@ public class Compensation {
         this.salary = salary;
     }
 
-    public String getEffectiveDate() {
+    public Date getEffectiveDate() {
         return effectiveDate;
     }
 
-    public void setEffectiveDate(String effectiveDate) {
+    public void setEffectiveDate(Date effectiveDate) {
         this.effectiveDate = effectiveDate;
     }
 }

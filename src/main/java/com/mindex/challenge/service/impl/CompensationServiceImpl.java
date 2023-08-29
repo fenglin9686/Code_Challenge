@@ -11,7 +11,6 @@ import com.mindex.challenge.dao.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
 
-import java.util.UUID;
 @Service
 public class CompensationServiceImpl implements CompensationService {
     private static final Logger LOG = LoggerFactory.getLogger(CompensationServiceImpl.class);
@@ -25,7 +24,16 @@ public class CompensationServiceImpl implements CompensationService {
     @Autowired
     private CompensationRepository compensationRepository;
 
-
+    /**
+     * Returns a compensation object
+     * Receiving compensation Object
+     * If existing employee then insert for compensation record for employee
+     * If employee id or employee not found by id, then it will create new record
+     * Throw error when insert compensation for same employee mutiple time
+     *
+     * @param  compensation: compensation Object
+     * @return      compensation Object
+     */
     @Override
     public Compensation create(Compensation compensation) {
         LOG.debug("Creating compensation: [{}]", compensation);
@@ -49,6 +57,15 @@ public class CompensationServiceImpl implements CompensationService {
         return compensation;
     }
 
+    /**
+     * Returns a compensation object
+     * Receiving employee id
+     * Return new compensation if record found
+     * Otherwise throw error message
+     *
+     * @param  id: employee id
+     * @return      compensation Object
+     */
 
     @Override
     public Compensation read(String id) {

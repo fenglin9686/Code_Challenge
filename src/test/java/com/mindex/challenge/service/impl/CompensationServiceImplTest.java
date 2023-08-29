@@ -13,6 +13,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import java.text.SimpleDateFormat;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -60,7 +62,11 @@ public class CompensationServiceImplTest {
         Compensation testCompensationWithEmployeeId = new Compensation();
         testCompensationWithEmployeeId.setEmployee(testCompensationEmployee);
         testCompensationWithEmployeeId.setSalary(100000);
-        testCompensationWithEmployeeId.setEffectiveDate("2023-8-28");
+        try {
+        testCompensationWithEmployeeId.setEffectiveDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-08-28"));
+        }catch (java.text.ParseException e) {
+            throw new RuntimeException("Invalidate date");
+        }
 
         Compensation createcompensation=restTemplate.postForEntity(compensationUrl, testCompensationWithEmployeeId, Compensation.class).getBody();
         assertCompensationEquivalence(testCompensationWithEmployeeId,createcompensation );
@@ -70,8 +76,11 @@ public class CompensationServiceImplTest {
         Compensation testCompensationWithoutEmployeeId = new Compensation();
         testCompensationWithoutEmployeeId.setEmployee(testEmployeeWithoutId);
         testCompensationWithoutEmployeeId.setSalary(200000);
-        testCompensationWithoutEmployeeId.setEffectiveDate("2023-9-28");
-
+        try {
+            testCompensationWithoutEmployeeId.setEffectiveDate(new SimpleDateFormat("yyyy-MM-dd").parse("2024-08-28"));
+        }catch (java.text.ParseException e) {
+            throw new RuntimeException("Invalidate date");
+        }
         Compensation createcompensationWithoutEmployeeId=restTemplate.postForEntity(compensationUrl, testCompensationWithoutEmployeeId, Compensation.class).getBody();
         assertCompensationEquivalence(testCompensationWithoutEmployeeId,createcompensationWithoutEmployeeId );
         assertEmployeeEquivalence(testEmployeeWithoutId, createcompensationWithoutEmployeeId.getEmployee());

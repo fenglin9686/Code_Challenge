@@ -19,7 +19,6 @@ public class ReportingStructureController {
     /**
      * Returns a reportingStructure Object
      * Receiving employee Id
-     * Return  reportingStructure record.
      *
      * @param  id: employee id
      * @return reportingStructure Object

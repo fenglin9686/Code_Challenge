@@ -29,7 +29,7 @@ public class CompensationServiceImpl implements CompensationService {
      * Receiving compensation Object
      * If existing employee then insert for compensation record for employee
      * If employee id or employee not found by id, then it will create new record
-     * Throw error when insert compensation for same employee mutiple time
+     * Throw error when insert compensation for same employee multiple time
      *
      * @param  compensation: compensation Object
      * @return      compensation Object

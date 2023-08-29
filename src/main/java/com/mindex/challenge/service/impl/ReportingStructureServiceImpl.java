@@ -35,7 +35,7 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
      * Returns number of report
      * Receiving employee
      * Recursion method calculate number of report
-     * And fill out employee information in variable of report, instead just id.
+     * And fill out employee information for DirectReports, instead just id.
      * @param  employee: employee object
      * @return      number of report
      */
